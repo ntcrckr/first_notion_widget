@@ -51,9 +51,9 @@
     
     <div id="counter">
 
-        <h2 class="box" id="days_left_in_year"></h2>
-        <h2 class="box" id="days_left_in_month"></h2>
-        <h2 class="box" id="days_left_in_week"></h2>
+        <h2 class="box" id="in_year"></h2>
+        <h2 class="box" id="in_month"></h2>
+        <h2 class="box" id="in_week"></h2>
         <h3>
             Days Left
         </h3>
@@ -63,9 +63,9 @@
 
 <script>
     function CountDownTimer  () {
-        days_left_in_year = document.getElementById("days_left_in_year");
-        days_left_in_month = document.getElementById("days_left_in_month");
-        days_left_in_week = document.getElementById("days_left_in_week");
+        days_left_in_year = document.getElementById("in_year");
+        days_left_in_month = document.getElementById("in_month");
+        days_left_in_week = document.getElementById("in_week");
     }
     
     function showRemaining (){
@@ -80,9 +80,9 @@
         left_in_year = Math.ceil((new_year.getTime()-now.getTime())/(one_day));
         left_in_month = Math.ceil((new_month.getTime()-now.getTime())/(one_day));
         left_in_week = Math.ceil((new_week.getTime()-now.getTime())/(one_day));
-        days_left_in_year.inner_HTML = left_in_year + "<br> <span class=\"small\"> days </span>";
-        days_left_in_month.inner_HTML = left_in_month + "<br> <span class=\"small\"> days </span>";
-        days_left_in_week.inner_HTML = left_in_week + "<br> <span class=\"small\"> days </span>";
+        days_left_in_year.innerHTML = left_in_year + "<br> <span class=\"small\"> days </span>";
+        days_left_in_month.innerHTML = left_in_month + "<br> <span class=\"small\"> days </span>";
+        days_left_in_week.innerHTML = left_in_week + "<br> <span class=\"small\"> days </span>";
     }
 
     timer = setInterval (showRemaining, 1000);

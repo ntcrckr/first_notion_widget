@@ -70,16 +70,16 @@
     
     function showRemaining (){
         now = new Date();
-        const new_year = new Date( now.getFullYear() + 1, 0, 0 );
-        const new_month = new Date( now.getFullYear(), now.getMonth() + 1, 0 );
-        const new_week = new Date( now.getFullYear(), now.getMonth(), now.getDate() + 7 - now.getDay() );
-        var one_second = 1000;
-        var one_minute = 60 * one_second;
-        var one_hour = 60 * one_minute;
-        var one_day = 24 * one_hour;
-        var left_in_year = Math.ceil((new_year.getTime()-now.getTime())/(one_day));
-        var left_in_month = Math.ceil((new_month.getTime()-now.getTime())/(one_day));
-        var left_in_week = Math.ceil((new_week.getTime()-now.getTime())/(one_day));
+        new_year = new Date( now.getFullYear() + 1, 0, 0 );
+        new_month = new Date( now.getFullYear(), now.getMonth() + 1, 0 );
+        new_week = new Date( now.getFullYear(), now.getMonth(), now.getDate() + 7 - now.getDay() );
+        one_second = 1000;
+        one_minute = 60 * one_second;
+        one_hour = 60 * one_minute;
+        one_day = 24 * one_hour;
+        left_in_year = Math.ceil((new_year.getTime()-now.getTime())/(one_day));
+        left_in_month = Math.ceil((new_month.getTime()-now.getTime())/(one_day));
+        left_in_week = Math.ceil((new_week.getTime()-now.getTime())/(one_day));
         days_left_in_year.inner_HTML = left_in_year + "<br> <span class=\"small\"> days </span>";
         days_lefT_in_month.inner_HTML = left_in_month + "<br> <span class=\"small\"> days </span>";
         days_left_in_week.inner_HTML = left_in_week + "<br> <span class=\"small\"> days </span>";

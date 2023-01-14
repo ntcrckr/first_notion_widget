@@ -80,9 +80,9 @@
         left_in_year = Math.ceil((new_year.getTime()-now.getTime())/(one_day));
         left_in_month = Math.ceil((new_month.getTime()-now.getTime())/(one_day));
         left_in_week = Math.ceil((new_week.getTime()-now.getTime())/(one_day));
-        days_left_in_year.innerHTML = left_in_year + "<br> <span class=\"small\"> days </span>";
-        days_left_in_month.innerHTML = left_in_month + "<br> <span class=\"small\"> days </span>";
-        days_left_in_week.innerHTML = left_in_week + "<br> <span class=\"small\"> days </span>";
+        days_left_in_year.innerHTML = left_in_year + "<br> <span class=\"small\"> in year </span>";
+        days_left_in_month.innerHTML = left_in_month + "<br> <span class=\"small\"> in month </span>";
+        days_left_in_week.innerHTML = left_in_week + "<br> <span class=\"small\"> in week </span>";
     }
 
     timer = setInterval (showRemaining, 1000);

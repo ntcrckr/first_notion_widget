@@ -14,8 +14,7 @@
             background-color: #fff;
         }
         .box{
-            <--display: inline-block;-->
-            <--display: inline-block;-->
+            display: inline-block;
             padding: 10px;
             border-radius: 5px;
             min-width: 40px;
@@ -50,15 +49,19 @@
 <body>
     
     <div id="counter">
-        <h2 class="box" id="in_year"></h2>
+        <h2 class="box" id="new_year"></h2>
     </div>
 
-    <div>
-        <h2 class="box" id="in_month"></h2>
+    <div id="counter">
+        <h2 class="box" id="anniversary"></h2>
     </div>
 
-    <div>
-        <h2 class="box" id="in_week"></h2>
+    <div id="counter">
+        <h2 class="box" id="mary_bday"></h2>
+    </div>
+
+    <div id="counter">
+        <h2 class="box" id="my_bday"></h2>
     </div>
 
     <div>
@@ -70,27 +73,73 @@
 
 
 <script>
-    function CountDownTimer  () {
-        days_left_in_year = document.getElementById("in_year");
-        days_left_in_month = document.getElementById("in_month");
-        days_left_in_week = document.getElementById("in_week");
+    function CountDownTimer() {
+        days_left_new_year = document.getElementById("new_year");
+        days_left_anniversary = document.getElementById("anniversary");
+        days_left_mary_bday = document.getElementById("mary_bday");
+        days_left_my_bday = document.getElementById("my_bday");
     }
     
-    function showRemaining (){
-        now = new Date();
-        new_year = new Date( now.getFullYear() + 1, 0, 0 );
-        new_month = new Date( now.getFullYear(), now.getMonth() + 1, 0 );
-        new_week = new Date( now.getFullYear(), now.getMonth(), now.getDate() + 7 - now.getDay() );
+    function nextYear(today) {
+        // 01.01.
+        return new Date( today.getFullYear() + 1, 0, 0 );
+    }
+
+    function nextAnniversary(today) {
+        // 27.08.
+        month = 7;
+        day = 27;
+        anniversary = new Date(today.getFullYear(), month, day);
+        if ( today.getMonth() > month || today.getMonth() == month && today.getDate() > day ) {
+            anniversary.setFullYear(anniversary.getFullYear() + 1);
+        }
+        return anniversary
+    }
+
+    function nextMaryBday(today) {
+        // 28.10.
+        month = 9;
+        day = 28;
+        anniversary = new Date(today.getFullYear(), month, day);
+        if ( today.getMonth() > month || today.getMonth() == month && today.getDate() > day ) {
+            anniversary.setFullYear(anniversary.getFullYear() + 1);
+        }
+        return anniversary
+    }
+
+    function nextMyBday(today) {
+        // 25.02.
+        month = 1;
+        day = 25;
+        anniversary = new Date(today.getFullYear(), month, day);
+        if ( today.getMonth() > month || today.getMonth() == month && today.getDate() > day ) {
+            anniversary.setFullYear(anniversary.getFullYear() + 1);
+        }
+        return anniversary
+    }
+
+    function daysBetween(from, to) {
+        return Math.ceil((to.getTime()-from.getTime())/(one_day));
+    }
+
+    function showRemaining () {
+        today = new Date();
+        next_year = nextYear(today);
+        next_anniversary = nextAnniversary(today);
+        next_mary_bday = nextMaryBday(today);
+        next_my_bday = nextMyBday(today);
         one_second = 1000;
         one_minute = 60 * one_second;
         one_hour = 60 * one_minute;
         one_day = 24 * one_hour;
-        left_in_year = Math.ceil((new_year.getTime()-now.getTime())/(one_day));
-        left_in_month = Math.ceil((new_month.getTime()-now.getTime())/(one_day));
-        left_in_week = Math.ceil((new_week.getTime()-now.getTime())/(one_day));
-        days_left_in_year.innerHTML = left_in_year + "<br> <span class=\"small\"> in year </span>";
-        days_left_in_month.innerHTML = left_in_month + "<br> <span class=\"small\"> in month </span>";
-        days_left_in_week.innerHTML = left_in_week + "<br> <span class=\"small\"> in week </span>";
+        left_next_year = daysBetween(today, next_year);
+        left_next_anniversary = daysBetween(today, next_anniversary);
+        left_next_mary_bday = daysBetween(today, next_mary_bday);
+        left_next_my_bday = daysBetween(today, next_my_bday);
+        days_left_new_year.innerHTML = left_next_year + "<br> <span class=\"small\"> new year </span>";
+        days_left_anniversary.innerHTML = left_next_anniversary + "<br> <span class=\"small\"> anniversary </span>";
+        days_left_my_bday.innerHTML = left_next_my_bday + "<br> <span class=\"small\"> my bday </span>";
+        days_left_mary_bday.innerHTML = left_next_mary_bday + "<br> <span class=\"small\"> mary bday </span>";
     }
 
     timer = setInterval (showRemaining, 1000);
